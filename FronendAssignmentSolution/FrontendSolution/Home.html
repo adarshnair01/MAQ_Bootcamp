@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="Report">
+
+<head>
+    
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>Reporting Demo</title>    
+       
+<!-- build:css styles/main.css -->
+    <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/Main.min.css" rel="stylesheet">
+    <link href="css/jsonGrid.css" rel="stylesheet">
+<!-- endbuild -->
+
+</head>
+
+<body>
+    <div class="container">
+        <div ng-controller="ReportController">
+            <!-- Header -->
+            <header>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="logo">
+                            <img src="Resources/Images/MAQLogo.svg" alt="logo" id="MAQLogo"/>
+                        </div>
+                    </div>
+
+                    <div class="col-md-9">
+                    <div class="Menu-options" id="navItems">
+                        <div class="menu" id="homeNav">
+                            Home
+                        </div>
+
+                        <div class="menu" id="categoryNav">
+                            <div class="dropdown">
+                                <button class="dropbtn">Category</button>
+                                    <div class="dropdown-content">
+                                        <a ng-click="Customer()" id="subCategory1">Customer</a>
+                                        <a ng-click="Product()" id="subCategory2">Product</a>
+                                        <a ng-click="Sales()" id="subCategory3">Sales</a>
+                                    </div>
+                            </div>
+                        </div>
+
+                        <div class="menu" id="contactNav">
+                            Contact
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Tiles -->
+            <div class="row" ng-init="Customer()">
+                    <div class="tiles" id="tilesContainer">
+                        <div class="col-md-12">
+                            <div class="col-md-3 firstTile">
+                                <div class="tile countTile" id="countTile">
+                                    <div class="tileTitle">
+                                        {{CountTileTitle}}
+                                    </div>
+                                    <div class="tileData" title={{CountTileData}}>
+                                         {{CountTileData}}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-3 secondTile">
+                                <div class="tile descriptionTile" id="descriptionTile">
+                                    <div class="tileTitle">
+                                        {{DescriptionTileTitle}}
+                                    </div>
+                                    <div class="tileData" title={{DescriptionTileData}}>
+                                        {{DescriptionTileData}}
+                                    </div>
+                                </div>
+                            </div>  
+
+                            <div class="col-md-3 thirdTile">
+                                <div class="tile idTile" id="idTile">
+                                    <div class="tileTitle">
+                                        {{IDTileTitle}}
+                                    </div>
+                                    <div class="tileData" title={{IDTileData}}>
+                                        {{IDTileData}}
+                                    </div>
+                                </div>
+                            </div>  
+
+                            <div class="col-md-3 fourthTile">
+                                <div class="tile metricTile" id="metricTile">
+                                    <div class="tileTitle">
+                                        {{MetricTileTitle}}
+                                    </div>
+                                    <div class="tileData" title={{MetricTileData}}>
+                                        {{MetricTileData}}
+                                    </div>
+                                </div>
+                            </div>  
+                        </div>
+
+                    </div>
+            </div>
+        </div> <!-- End of controller div -->
+
+         <!-- Chart -->
+         <div class="row">
+             <div class="col-md-12">
+                <div class="chartTitle" id="maqChartTitle">
+                    Discount Sheet
+                    <hr>
+                </div>
+             </div>
+         </div>
+
+         <div class="row">
+             <div class="col-md-12">
+                <div class="maqChart" id="maqChart"></div>
+             </div>
+         </div>
+
+        <!-- JSON Grid -->
+        <div class="row">
+            <div class="col-md-12">
+                <div id="jsonGridTitle" class="jsonGridTitle">
+                    Sales Details
+                    <hr>
+                </div>
+
+                <div id="jsonGrid" class="grid">
+                </div>
+            </div>
+        </div>
+    
+    <footer>
+      <div class="row">
+          <div class="col-md-12 pageFooter">
+              <div class="col-md-6 copyright" id="maqCopyright">
+                    &copy; 2016 MAQ Software. All rights reserved.
+              </div>
+
+            <div class="col-md-6 social-positon">
+                <div class="social-icons">
+                   <a href="http://www.linkedin.com/company/20688?trk=tyah&amp;trkInfo=tas%3AMAQ%20Software%2Cidx%3A2-1-2" target="_blank"> 
+                        <img src="Resources/Images/linkedin.svg" alt="linkedIn" id="maqLinkedin"/>
+                   </a>
+                   <a href="https://www.facebook.com/MAQSoftware" target="_blank"> 
+                    <img src="Resources/Images/facebook.svg" alt="Facebook" id="maqFacebook"/>
+                   </a>
+
+                   <a href="http://twitter.com/MAQSoftware" target="_blank"> 
+                    <img src="Resources/Images/twitter.svg" alt="Twitter" id="maqTwitter"/>
+                   </a>
+                   <a href="http://www.youtube.com/maqsoftware" target="_blank"> 
+                    <img src="Resources/Images/youtube.svg" alt="YouTube" id="maqYouTube"/>
+                   </a>
+                </div>
+            </div>
+          </div>
+      </div>
+    </footer>
+
+</div>
+<!-- build:js scripts/main.js -->
+    <script src="../bower_components/angular/angular.min.js"></script>
+    <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+     <script src="js/MAQCharts.js"></script>
+     <script src="js/Main.js?v=0.1"></script>
+     <script src="js/controller.js?v=0.1"></script>
+     <script src="js/formatter.js"></script>
+     <script src="js/jsonGrid.js"></script>
+     <script src="js/maqUtility.js"></script>
+      <script src="js/gridconfig.js"></script>
+<!-- endbuild -->
+
+</body>
+
+</html>

@@ -1,0 +1,14 @@
+{
+  "name": "FronendAssignmentSolution",
+  "description": "Report Assignment",
+  "main": "index.js",
+  "authors": [
+    "TavishA"
+  ],
+  "license": "ISC",
+  "homepage": "Home.html",
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "angular": "^1.6.0"
+  }
+}
