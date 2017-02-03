@@ -9,57 +9,9 @@
 
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
-                @Html.Partial("_LoginPartial")
-            </div>
-        </div>
-    </div>
     <div class="container body-content">
         @RenderBody()
         <hr />
-
-        <footer>
-            <div class="row">
-                <div class="col-md-12 pageFooter">
-                    <div class="col-md-6 copyright" id="maqCopyright">
-                        &copy; 2017 MAQ Software. All rights reserved.
-                    </div>
-
-                    <div class="col-md-6 social-positon">
-                        <div class="social-icons">
-                            <a href="http://www.linkedin.com/company/20688?trk=tyah&amp;trkInfo=tas%3AMAQ%20Software%2Cidx%3A2-1-2" target="_blank">
-                                <img src="Resources/Images/linkedin.svg" alt="linkedIn" id="maqLinkedin" />
-                            </a>
-                            <a href="https://www.facebook.com/MAQSoftware" target="_blank">
-                                <img src="Resources/Images/facebook.svg" alt="Facebook" id="maqFacebook" />
-                            </a>
-
-                            <a href="http://twitter.com/MAQSoftware" target="_blank">
-                                <img src="Resources/Images/twitter.svg" alt="Twitter" id="maqTwitter" />
-                            </a>
-                            <a href="http://www.youtube.com/maqsoftware" target="_blank">
-                                <img src="Resources/Images/youtube.svg" alt="YouTube" id="maqYouTube" />
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </footer>
     </div>
 
     @Scripts.Render("~/bundles/jquery")
