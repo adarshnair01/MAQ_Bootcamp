@@ -167,8 +167,10 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Constants.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BarChartController.cs" />
+    <Compile Include="Controllers\BarGridController.cs" />
     <Compile Include="Controllers\GridController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -184,6 +186,8 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\bootstrap_theme.css" />
+    <Content Include="Content\images\info-16.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -200,8 +204,8 @@
     <Content Include="Resources\Images\Table sort_Up active.svg" />
     <Content Include="Resources\Images\twitter.svg" />
     <Content Include="Resources\Images\youtube.svg" />
-    <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\Other_bootstrap.js" />
+    <Content Include="Scripts\Other_bootstrap.min.js" />
     <None Include="Properties\PublishProfiles\BootCampWebApi20170203064734 - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -212,17 +216,17 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
-    <Content Include="Scripts\respond.js" />
-    <Content Include="Scripts\respond.min.js" />
-    <Content Include="Scripts\_references.js" />
+    <Content Include="Scripts\Other_respond.js" />
+    <Content Include="Scripts\Other_respond.min.js" />
+    <Content Include="Scripts\Other_references.js" />
     <Content Include="Content\jsonGrid.css" />
     <Content Include="Content\Main.css" />
     <Content Include="Content\Main.min.css" />
-    <Content Include="Scripts\formatter.js" />
-    <Content Include="Scripts\gridconfig.js" />
+    <Content Include="Scripts\Other_formatter.js" />
+    <Content Include="Scripts\MAQ_gridconfig.js" />
     <Content Include="Scripts\jquery.min.js" />
-    <Content Include="Scripts\jsonGrid.js" />
-    <Content Include="Scripts\Main.js" />
+    <Content Include="Scripts\MAQjsonGrid.js" />
+    <Content Include="Scripts\MAQMain.js" />
     <Content Include="Scripts\MAQCharts.js" />
     <Content Include="Scripts\maqUtility.js" />
     <Content Include="Web.config" />
@@ -263,6 +267,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\BarGrid\" />
     <Folder Include="Views\Grid\" />
   </ItemGroup>
   <ItemGroup>

@@ -1,9 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using System.Data.SqlClient;
+using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace BootCampWebApi.Controllers
 {
@@ -12,13 +11,12 @@ namespace BootCampWebApi.Controllers
         // GET: BarChart
         public string Index()
         {
-
-            string s = "";
-            string cities = "[";
-            string values = "[";
+            List<string> Cities = new List<string>();
+            List<double> Value = new List<double>();
+            Cities TopCities = new Cities();
+            string s = string.Empty;
             try
             {
-
                 string connetionString = null;
                 SqlConnection connection;
                 SqlCommand command;
@@ -26,7 +24,6 @@ namespace BootCampWebApi.Controllers
                 SqlDataReader dataReader;
                 connetionString = "Data Source=DESKTOP-483S0CP\\SQLEXPRESS;Initial Catalog=Ext_Bootcamp;Integrated Security=True";
                 sql1 = "Select [City], [Total Sales] FROM [dbo].[vw_TopTenSalesCities];";
-
                 connection = new SqlConnection(connetionString);
                 try
                 {
@@ -35,14 +32,11 @@ namespace BootCampWebApi.Controllers
                     dataReader = command.ExecuteReader();
                     while (dataReader.Read())
                     {
-                        cities += "\"" + Convert.ToString(dataReader.GetValue(0)) + "\", ";
-                        values += Convert.ToString(dataReader.GetValue(1)) + ", ";
+                        Cities.Add(Convert.ToString(dataReader.GetValue(0)));
+                        Value.Add(Convert.ToDouble(Convert.ToString(dataReader.GetValue(1))));
                     }
-                    cities = cities.Remove(cities.Length - 2);
-                    values = values.Remove(values.Length - 2);
-                    cities += "]";
-                    values += "]";
-                    s = "{ \"cities\": " + cities + ", \"values\": " + values + "}";
+                    TopCities = new Cities() { cities = Cities, values = Value };
+                    s = JsonConvert.SerializeObject(TopCities);
                     dataReader.Dispose();
                     command.Dispose();
                     connection.Close();
@@ -56,7 +50,6 @@ namespace BootCampWebApi.Controllers
             {
                 Console.Write(exp.Message);
             }
-
             return s;
         }
     }

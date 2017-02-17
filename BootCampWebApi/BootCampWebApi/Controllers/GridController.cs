@@ -1,8 +1,8 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Web;
+using System.Text;
 using System.Web.Mvc;
 
 namespace BootCampWebApi.Controllers
@@ -10,18 +10,17 @@ namespace BootCampWebApi.Controllers
     public class GridController : Controller
     {
         // GET: Grid
-        public string Index(string city)
+        public ActionResult Index(string city)
         {
-            string s = "[";
-            //string productName = "[";
-            //string color = "[";
-            //string totalSales = "[";
+            string s = string.Empty;
+            List<Product> topProducts = new List<Product>();
             SqlConnection connection;
             SqlCommand command;
+            StringBuilder script = new StringBuilder();
             string sql1 = null;
             SqlDataReader dataReader;
-            string connetionString = "Data Source=DESKTOP-483S0CP\\SQLEXPRESS;Initial Catalog=Ext_Bootcamp;Integrated Security=True";
-            sql1 = "SELECT * FROM [dbo].[udf_Top10ProductSales] ('"+ city + "')";
+            string connetionString = Constants.ConnectionString;
+            sql1 = script.AppendFormat(Constants.CitySelectStatement, city).ToString();
             connection = new SqlConnection(connetionString);
             try
             {
@@ -30,23 +29,10 @@ namespace BootCampWebApi.Controllers
                 dataReader = command.ExecuteReader();
                 while (dataReader.Read())
                 {
-                    s += "{ \"Product\": \"" + Convert.ToString(dataReader.GetValue(0)) + "\", \"Color\": \"" + Convert.ToString(dataReader.GetValue(1)) + "\", \"Sales\": " + Convert.ToString(dataReader.GetValue(2)) + "},";
+                    Product topProduct = new Product() { Name = Convert.ToString(dataReader.GetValue(0)), Color = Convert.ToString(dataReader.GetValue(1)), Sales = Convert.ToDouble(Convert.ToString(dataReader.GetValue(2))) };
+                    topProducts.Add(topProduct);
                 }
-                s = s.Remove(s.Length - 1);
-                s += "]";
-                //productName += "\"" + Convert.ToString(dataReader.GetValue(0)) + "\", ";
-                //color += Convert.ToString(dataReader.GetValue(1)) + ", ";
-                //totalSales += Convert.ToString(dataReader.GetValue(1)) + ", ";
-                //}
-                //productName = productName.Remove(productName.Length - 2);
-                //color = color.Remove(color.Length - 2);
-                //totalSales = totalSales.Remove(totalSales.Length - 2);
-                //productName += "]";
-                //color += "]";
-                //totalSales += "]";
-                //s = "{ \"product_name\": " + productName + ", \"color\": " + color + ", \"totalSales\": " + totalSales + "}";
-                //totalSales = totalSales.Remove(totalSales.Length - 2);
-                //totalSales = totalSales.Remove(totalSales.Length - 2);
+                s = JsonConvert.SerializeObject(topProducts); 
                 dataReader.Dispose();
                 command.Dispose();
                 connection.Close();
@@ -55,8 +41,7 @@ namespace BootCampWebApi.Controllers
             {
                 Console.Write(exp.Message);
             }
-
-            return s;
+            return Content(s, "application/json");
         }
 
     }

@@ -66,3 +66,4 @@ D:\bootcamp\Final Project\BootCampWebApi\BootCampWebApi\bin\Microsoft.Owin.Secur
 D:\bootcamp\Final Project\BootCampWebApi\BootCampWebApi\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 D:\bootcamp\Final Project\BootCampWebApi\BootCampWebApi\obj\Release\BootCampWebApi.dll
 D:\bootcamp\Final Project\BootCampWebApi\BootCampWebApi\obj\Release\BootCampWebApi.pdb
+D:\bootcamp\Final Project\BootCampWebApi\BootCampWebApi\obj\Release\BootCampWebApi.csprojResolveAssemblyReference.cache

@@ -1,23 +1,39 @@
 ﻿
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="maqChart" id="maqChart"></div>
-            </div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <h2>Top 10 Cities</h2>
+            <img class="IconImage" id="IconImageinfo" src="~/Content/images/info-16.png" title="This bar chart displays top 10 cities with maximum sales">
+            <hr />
+            <div class="maqChart" id="maqChart"></div>
         </div>
 
         <!-- JSON Grid -->
-        <div class="row">
-            <div class="col-md-12">
-                <div id="jsonGridTitle" class="jsonGridTitle">
-                    Sales Details
-                    <hr>
-                </div>
+        <div class="col-md-6">
+            <div id="jsonGridTitle" class="jsonGridTitle">
+                <h2>Sales Details</h2>
+                <img class="IconImage" id="IconImageinfo" src="~/Content/images/info-16.png" title="This bar chart displays top 10 cities with maximum sales">
+                <hr />
+            </div>
+            <select class="form-control" id="sltcity"></select>
+            <br />
 
-                <div id="jsonGrid" class="grid">
-                </div>
+            <div id="jsonGrid" class="grid">
             </div>
         </div>
-
-
     </div>
+</div>
+<style>
+    .glyphicon {
+        position: absolute;
+        left: 200px;
+        top: 30px;
+    }
+
+    .IconImage {
+        position: absolute;
+        top: 30px;
+        left: 200px;
+    }
+</style>
+@Scripts.Render("~/bundles/maq")
